@@ -1,0 +1,28 @@
+.button{
+    padding: clamp(24.9px, 1.5625vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.12px;
+    background: var(--button-main);
+    background-blend-mode: hard-light;
+    backdrop-filter: blur(25px);
+    border: none;
+    width: max-content;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    text-decoration: none;
+    
+    &:hover{
+        border-radius: 20px;
+        background: black;
+    }
+}
+
+.button.secondary{
+    border: var(--border-button);
+    padding: 20.249px;
+    background: var(--button-secondary);
+    background-blend-mode: hard-light;
+    backdrop-filter: blur(16.87421226501465px);
+}
