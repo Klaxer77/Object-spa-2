@@ -6,8 +6,51 @@ import 'swiper/css/autoplay';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import axios from 'axios';
+import {
+  preloadAllMenuImages,
+  renderMenuFoodCategories,
+} from './menuFood.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+
+// Глобальный кэш изображений
+window.menuFoodImageCache = {};
+
+function preloadMenuFoodImages() {
+  if (!window.menuFoodPositionsByCategory) return;
+  const allImages = window.menuFoodPositionsByCategory.flatMap((cat) =>
+    cat.positions.map((pos) => pos.img),
+  );
+  allImages.forEach((src) => {
+    if (!window.menuFoodImageCache[src]) {
+      const img = new window.Image();
+      img.src = src;
+      window.menuFoodImageCache[src] = img;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await preloadAllMenuImages();
+  } catch (e) {
+    console.error('Ошибка загрузки изображений меню:', e);
+  }
+  renderMenuFoodCategories();
+  const category = document.querySelector('.menu_food__category');
+  if (category) {
+    category.addEventListener(
+      'wheel',
+      function (e) {
+        if (category.scrollWidth > category.clientWidth) {
+          if (e.deltaY !== 0) {
+            e.preventDefault();
+            category.scrollLeft += e.deltaY;
+          }
+        }
+      },
+      { passive: false },
+    );
+  }
   setYear();
   initForm();
   initModal();
@@ -17,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenu();
 
   const form = document.getElementById('form');
-
   form.addEventListener('submit', function (event) {
     event.preventDefault();
   });
@@ -45,21 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  const category = document.querySelector('.menu_food__category');
-  if (category) {
-    category.addEventListener(
-      'wheel',
-      function (e) {
-        if (category.scrollWidth > category.clientWidth) {
-          if (e.deltaY !== 0 && !e.shiftKey) {
-            e.preventDefault();
-            category.scrollLeft += e.deltaY * 0.7;
-          }
-        }
-      },
-      { passive: false },
-    );
-  }
+  // Предзагрузка всех food и breakfast изображений в кэш
+  preloadMenuFoodImages();
 });
 
 const initMenu = () => {

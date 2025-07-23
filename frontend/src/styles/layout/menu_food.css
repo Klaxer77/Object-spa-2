@@ -12,6 +12,41 @@
   gap: 50px;
 }
 
+.menu_food__wrapper.food[data-category='Карта бара'] {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 50px;
+  width: 100%;
+}
+.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item,
+.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__subcategory {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 8px 0;
+}
+.menu_food__subcategory-block {
+  display: block;
+  width: 100%;
+  margin-bottom: 32px;
+}
+.menu_food__subcategory-items {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.menu_food__subcategory {
+  display: block;
+  width: 100%;
+  margin: 40px 0 8px 0;
+  font-size: 1.3em;
+  font-weight: 700;
+  text-align: left;
+  color: #222;
+}
+
 @media (max-width: 710px) {
   .menu_food__wrapper.food {
     grid-template-columns: 1fr;
@@ -69,10 +104,8 @@
   &::-webkit-scrollbar {
     display: none;
   }
-  cursor: grab;
 }
 .menu_food__category.dragging {
-  cursor: grabbing;
   user-select: none;
 }
 
@@ -80,13 +113,10 @@
   background-color: var(--gray-white);
   transition: background 0.2s;
   border-radius: 15px;
-  width: 320px;
+  min-width: 320px;
   min-height: 190px;
   padding: 14px;
   cursor: pointer;
-}
-.menu_food__category.dragging .menu_food__category-item {
-  cursor: grabbing;
 }
 
 .menu_food__category-item:hover {
@@ -124,6 +154,7 @@
 }
 
 .menu_food__item {
+  display: none;
   position: relative;
   border: 1px solid #eaeaea;
   background-color: var(--gray-white, #fff);
@@ -135,7 +166,6 @@
   transition: background 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(64, 64, 64, 0.06);
 }
-
 
 .menu_food__item-img {
   width: 100%;
@@ -185,4 +215,38 @@
   line-height: 38px;
   letter-spacing: -2%;
   color: var(--gray-black);
+}
+
+.menu_food__item--Карта_бара {
+  width: 320px;
+  height: 280px !important;
+  margin: 0 12px 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+.menu_food__item--Карта_бара .menu_food__item-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.menu_food__item-price--center {
+  position: static;
+  margin: 0 auto;
+  margin-top: 40px;
+  background: none;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 24px;
+}
+
+.menu_food__category-item,
+.menu_food__item {
+  will-change: background, color, box-shadow, transform;
 }
