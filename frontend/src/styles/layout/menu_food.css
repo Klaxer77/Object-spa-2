@@ -14,8 +14,8 @@
 
 .menu_food__wrapper.food[data-category='Карта бара'] {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 50px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
   width: 100%;
 }
 .menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item,
@@ -45,6 +45,53 @@
   font-weight: 700;
   text-align: left;
   color: #222;
+}
+
+.menu_food__subcategory-title {
+  grid-column: 1 / -1;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: left;
+  color: #222;
+  margin: 40px 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-family);
+}
+
+@media (max-width: 1200px) {
+  .menu_food__wrapper.food[data-category='Карта бара'] {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .menu_food__wrapper.food[data-category='Карта бара'] {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu_food__wrapper.food[data-category='Карта бара'] {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .menu_food__subcategory-title {
+    font-size: 1.3em;
+    margin: 32px 0 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu_food__wrapper.food[data-category='Карта бара'] {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 @media (max-width: 710px) {
@@ -215,6 +262,10 @@
   line-height: 38px;
   letter-spacing: -2%;
   color: var(--gray-black);
+
+  @media (max-width: 480px) {
+    font-size: 24px !important;
+  }
 }
 
 .menu_food__item--Карта_бара {
@@ -249,4 +300,34 @@
 .menu_food__category-item,
 .menu_food__item {
   will-change: background, color, box-shadow, transform;
+}
+
+.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+
+.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item-title {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item-weight {
+  font-size: 0.8em;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item-price-text {
+  font-weight: 700;
+  color: #222;
 }

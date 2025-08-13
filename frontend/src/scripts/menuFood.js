@@ -735,36 +735,46 @@ export function renderAllMenuFoodPositions() {
   const wrapper = document.querySelector('.menu_food__wrapper.food');
   if (!wrapper) return;
 
-  // Получить выбранную категорию
+ 
   const currentCategory = wrapper.getAttribute('data-category');
 
-  // Если выбрана "Карта бара" — рендерим все позиции подряд
+ 
   if (currentCategory === 'Карта бара') {
     const barCategory = menuFoodPositionsByCategory.find((cat) => cat.category === 'Карта бара');
     if (barCategory) {
-      const allBarItems = barCategory.positions
-        .filter((subcat) => subcat.type === 'subcategory' && Array.isArray(subcat.items))
-        .flatMap((subcat) => subcat.items);
-      wrapper.innerHTML = allBarItems
-        .map(
-          (pos) => `
-          <div class="menu_food__item menu_food__item--Карта_бара" style="max-width:320px; height: 190px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div class="menu_food__item-price menu_food__item-price--center" style="text-align: center; margin-bottom: 0;">
-              <p class="menu_food__item-price-text" style="font-size: 1.5em;">${pos.price || ''}</p>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: flex-start;">
-              <p class="menu_food__item-title" style="text-align: left;">${pos.title}</p>
-              <p class="menu_food__item-weight" style="text-align: left;">${pos.weight || ''}</p>
-            </div>
-          </div>
-        `,
-        )
-        .join('');
+      let barHTML = '';
+
+      barCategory.positions.forEach((subcat) => {
+        if (subcat.type === 'subcategory' && Array.isArray(subcat.items)) {
+          
+          barHTML += `<div class="menu_food__subcategory-title">${subcat.title}</div>`;
+
+          
+          subcat.items.forEach((pos) => {
+            barHTML += `
+              <div class="menu_food__item menu_food__item--Карта_бара" style="max-width: none; height: 190px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="menu_food__item-price menu_food__item-price--center" style="text-align: center; margin-bottom: 0;">
+                  <p class="menu_food__item-price-text" style="font-size: 1.5em;">${
+                    pos.price || ''
+                  }</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                  <p class="menu_food__item-title" style="text-align: left;">${pos.title}</p>
+                  <p class="menu_food__item-weight" style="text-align: left;">${
+                    pos.weight || ''
+                  }</p>
+                </div>
+              </div>
+            `;
+          });
+        }
+      });
+
+      wrapper.innerHTML = barHTML;
       return;
     }
   }
 
-  // Обычный рендер для остальных категорий
   wrapper.innerHTML = menuFoodPositionsByCategory
     .map((cat) => {
       if (cat.category === 'Карта бара') return '';
@@ -795,7 +805,6 @@ export function showMenuCategory(categoryTitle) {
   if (wrapper) {
     wrapper.setAttribute('data-category', categoryTitle);
     renderAllMenuFoodPositions();
-    // Скрыть/показать только нужные позиции
     const allItems = document.querySelectorAll('.menu_food__item');
     allItems.forEach((item) => {
       if (item.dataset.category === categoryTitle || categoryTitle === 'Карта бара') {
@@ -807,7 +816,7 @@ export function showMenuCategory(categoryTitle) {
   }
 }
 
-// Функция рендера категорий и добавления обработчиков кликов
+
 export function renderMenuFoodCategories() {
   const container = document.querySelector('.menu_food__category');
   if (!container) return;
