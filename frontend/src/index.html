@@ -21,6 +21,7 @@
               <a class="T2 header__nav-item" href="#about">О нас</a>
               <a class="T2 header__nav-item" href="#programs">Программы</a>
               <a class="T2 header__nav-item" href="#menu_food">Меню</a>
+              <a class="T2 header__nav-item" href="#spa">Аренда СПА</a>
               <a class="T2 header__nav-item" href="#why">Почему мы</a>
               <a class="T2 header__nav-item" href="#contacts">Контакты</a>
             </nav>
@@ -33,6 +34,7 @@
               <a class="T2 header__nav-item" href="#about">О нас</a>
               <a class="T2 header__nav-item" href="#programs">Программы</a>
               <a class="T2 header__nav-item" href="#menu_food">Меню</a>
+              <a class="T2 header__nav-item" href="#spa">Аренда СПА</a>
               <a class="T2 header__nav-item" href="#why">Почему мы</a>
               <a class="T2 header__nav-item" href="#contacts">Контакты</a>
             </nav>
@@ -376,7 +378,7 @@
                     <div class="programm__card-container">
                       <div class="programm__card-group">
                         <h3 class="H4 programm__card-title">Царь Таежник</h3>
-                        <p class="T4 programm__card-descp">50 000 ₽ - 3 часа</p>
+                        <p class="T4 programm__card-descp">25 000 ₽ - 1,5 часа</p>
                       </div>
                       <button class="T4 button programm__card-button">Забронировать</button>
                     </div>
@@ -391,7 +393,7 @@
                     <div class="programm__card-container">
                       <div class="programm__card-group">
                         <h3 class="H4 programm__card-title">Алмазное Возрождение</h3>
-                        <p class="T4 programm__card-descp">50 000 ₽ - 3 часа</p>
+                        <p class="T4 programm__card-descp">25 000 ₽ - 1,5 часа</p>
                       </div>
                       <button class="T4 button programm__card-button">Забронировать</button>
                     </div>
@@ -409,7 +411,7 @@
                         <h3 class="H4 programm__card-title">
                           Сила стихий:<br />Детокс и возрождение<br />(Римская Парная)
                         </h3>
-                        <p class="T4 programm__card-descp">40 000 ₽ - 3 часа</p>
+                        <p class="T4 programm__card-descp">32 000 ₽ - 2 часа</p>
                       </div>
                       <button class="T4 button programm__card-button">Забронировать</button>
                     </div>
@@ -439,7 +441,7 @@
                     <div class="programm__card-container">
                       <div class="programm__card-group">
                         <h3 class="H4 programm__card-title">ЭГОИСТКА: Искусство быть собой</h3>
-                        <p class="T4 programm__card-descp">40 000 ₽ - 3 часа</p>
+                        <p class="T4 programm__card-descp">25 000 ₽ - 1,5 часов</p>
                       </div>
                       <button class="T4 button programm__card-button">Забронировать</button>
                     </div>
@@ -585,6 +587,13 @@
             <div class="swiper-wrapper areas__container">
               <div class="swiper-slide areas__item">
                 <div class="areas__item-text">
+                  <img class="areas__item-img" alt="img" src="./assets/images/hotelRoom.webp" />
+                  <h3 class="H4 areas__item-title">Гостиничные номера</h3>
+                  <p class="T4 areas__item-descp">Cоздан при участии имя фамилия</p>
+                </div>
+              </div>
+              <div class="swiper-slide areas__item">
+                <div class="areas__item-text">
                   <img class="areas__item-img" alt="img" src="./assets/images/areaRestoran.webp" />
                   <h3 class="H4 areas__item-title">РЕСТОРАН</h3>
                   <p class="T4 areas__item-descp">Cоздан при участии имя фамилия</p>
@@ -621,6 +630,21 @@
             </div>
           </div>
         </div>
+      </section>
+      <section id="spa" class="spa">
+        <div class="wrapper spa__wrapper">
+          <div class="spa__text">
+            <!-- <h3 class="H4 spa__h3">Аренда СПА</h3> -->
+            <h2 class="H2 spa__h2">Аренда СПА</h2>
+          </div>
+        </div>
+
+        <!-- map из js файла -->
+        <div class="spa__category"></div>
+
+        
+        <!-- map из js файла -->
+        <div class="wrapper spa__wrapper spa"></div>
       </section>
       <section id="menu_food" class="menu_food">
         <div class="wrapper menu_food__wrapper">
@@ -771,5 +795,6 @@
     </nav>
     <script type="module" src="./scripts/index.js"></script>
     <script type="module" src="./scripts/menuFood.js"></script>
+    <script type="module" src="./scripts/spa.js"></script>
   </body>
 </html>

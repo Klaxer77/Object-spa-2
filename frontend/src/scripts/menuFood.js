@@ -735,10 +735,8 @@ export function renderAllMenuFoodPositions() {
   const wrapper = document.querySelector('.menu_food__wrapper.food');
   if (!wrapper) return;
 
- 
   const currentCategory = wrapper.getAttribute('data-category');
 
- 
   if (currentCategory === 'Карта бара') {
     const barCategory = menuFoodPositionsByCategory.find((cat) => cat.category === 'Карта бара');
     if (barCategory) {
@@ -746,10 +744,8 @@ export function renderAllMenuFoodPositions() {
 
       barCategory.positions.forEach((subcat) => {
         if (subcat.type === 'subcategory' && Array.isArray(subcat.items)) {
-          
           barHTML += `<div class="menu_food__subcategory-title">${subcat.title}</div>`;
 
-          
           subcat.items.forEach((pos) => {
             barHTML += `
               <div class="menu_food__item menu_food__item--Карта_бара" style="max-width: none; height: 190px; display: flex; flex-direction: column; justify-content: space-between;">
@@ -815,7 +811,6 @@ export function showMenuCategory(categoryTitle) {
     });
   }
 }
-
 
 export function renderMenuFoodCategories() {
   const container = document.querySelector('.menu_food__category');

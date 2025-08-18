@@ -1,43 +1,59 @@
-.menu_food__wrapper {
+.spa__wrapper {
   padding-top: clamp(38px, 5.41666666667vw, 104px) !important;
   @media (max-width: 1024px) {
     padding: 16px !important;
   }
 }
 
-.menu_food__wrapper.food {
+.spa__wrapper.spa {
   padding-top: 40px !important;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 50px;
+  gap: 20px 50px;
 }
 
-.menu_food__wrapper.food[data-category='Карта бара'] {
-  display: grid !important;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  width: 100%;
-}
-.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item,
-.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__subcategory {
-  width: 100%;
-  max-width: none;
-  margin: 0 0 8px 0;
-}
-.menu_food__subcategory-block {
+.spa__subcategory-block {
   display: block;
   width: 100%;
   margin-bottom: 32px;
 }
-.menu_food__subcategory-items {
+.spa__subcategory-items {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 24px;
+  grid-column: 1 / -1;
 }
 
-.menu_food__subcategory {
+@media (max-width: 1200px) {
+  .spa__subcategory-items {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .spa__subcategory-items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .spa__subcategory-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spa__subcategory-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.spa__subcategory {
   display: block;
   width: 100%;
   margin: 40px 0 8px 0;
@@ -47,7 +63,7 @@
   color: #222;
 }
 
-.menu_food__subcategory-title {
+.spa__subcategory-title {
   grid-column: 1 / -1;
   font-size: 1.5em;
   font-weight: 700;
@@ -61,53 +77,27 @@
   font-family: var(--font-family);
 }
 
-@media (max-width: 1200px) {
-  .menu_food__wrapper.food[data-category='Карта бара'] {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .menu_food__wrapper.food[data-category='Карта бара'] {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-}
-
 @media (max-width: 768px) {
-  .menu_food__wrapper.food[data-category='Карта бара'] {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .menu_food__subcategory-title {
+  .spa__subcategory-title {
     font-size: 1.3em;
     margin: 32px 0 20px 0;
   }
 }
 
-@media (max-width: 480px) {
-  .menu_food__wrapper.food[data-category='Карта бара'] {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-}
-
 @media (max-width: 710px) {
-  .menu_food__wrapper.food {
+  .spa__wrapper.spa {
     grid-template-columns: 1fr;
     justify-items: center;
   }
 }
 
-.menu_food__text {
+.spa__text {
   display: flex;
   flex-direction: column;
   gap: clamp(13px, 1.04166666667vw, 20px);
 }
 
-.menu_food__h3 {
+.spa__h3 {
   color: var(--gray-darker);
   line-height: 100%;
   letter-spacing: -2%;
@@ -121,7 +111,7 @@
   }
 }
 
-.menu_food__h2 {
+.spa__h2 {
   color: var(--gray-darker);
   line-height: 100%;
   letter-spacing: -2%;
@@ -136,7 +126,7 @@
   }
 }
 
-.menu_food__category {
+.spa__category {
   display: flex;
   gap: 15px;
   align-items: center;
@@ -152,11 +142,11 @@
     display: none;
   }
 }
-.menu_food__category.dragging {
+.spa__category.dragging {
   user-select: none;
 }
 
-.menu_food__category-item {
+.spa__category-item {
   background-color: var(--gray-white);
   transition: background 0.2s;
   border-radius: 15px;
@@ -166,22 +156,22 @@
   cursor: pointer;
 }
 
-.menu_food__category-item:hover {
+.spa__category-item:hover {
   background-color: #404040;
-  .menu_food__category-title {
+  .spa__category-title {
     color: var(--gray-white);
   }
 }
 
-.menu_food__category-item.active {
+.spa__category-item.active {
   background-color: #404040;
 }
 
-.menu_food__category-item.active .menu_food__category-title {
+.spa__category-item.active .spa__category-title {
   color: var(--gray-white);
 }
 
-.menu_food__category-img {
+.spa__category-img {
   width: 290px;
   height: 110px;
   border-radius: 10px;
@@ -190,7 +180,7 @@
   object-position: center;
 }
 
-.menu_food__category-title {
+.spa__category-title {
   font-family: var(--font-family);
   color: #404040;
   line-height: 37px;
@@ -200,7 +190,7 @@
   margin-top: 14px;
 }
 
-.menu_food__item {
+.spa__item {
   display: none;
   position: relative;
   border: 1px solid #eaeaea;
@@ -214,7 +204,7 @@
   box-shadow: 0 2px 8px rgba(64, 64, 64, 0.06);
 }
 
-.menu_food__item-img {
+.spa__item-img {
   width: 100%;
   height: 180px;
   object-fit: cover;
@@ -222,7 +212,7 @@
   margin-bottom: 16px;
 }
 
-.menu_food__item-title {
+.spa__item-title {
   font-family: var(--font-family);
   color: var(--gray-darker);
   font-size: 24px;
@@ -233,15 +223,22 @@
   transition: color 0.2s;
 }
 
-.menu_food__item-weight {
+.spa__item-desc {
   font-family: var(--font-family);
-  font-size: 24px;
-  line-height: 38px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
   color: var(--gray-darker);
 }
 
-.menu_food__item-price {
+.spa__item-time {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.spa__item-price {
   font-family: var(--font-family);
   position: absolute;
   top: 30px;
@@ -255,7 +252,7 @@
   justify-content: center;
 }
 
-.menu_food__item-price-text {
+.spa__item-price-text {
   font-family: var(--font-family);
   font-size: 24px;
   font-weight: 600;
@@ -268,64 +265,7 @@
   }
 }
 
-.menu_food__item--Карта_бара {
-  width: 320px;
-  height: 280px !important;
-  margin: 0 12px 24px 0;
-  display: flex;
-  flex-direction: column;
-}
-.menu_food__item--Карта_бара .menu_food__item-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.menu_food__item-price--center {
-  position: static;
-  margin: 0 auto;
-  margin-top: 40px;
-  background: none;
-  min-width: 0;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 24px;
-}
-
-.menu_food__category-item,
-.menu_food__item {
+.spa__category-item,
+.spa__item {
   will-change: background, color, box-shadow, transform;
-}
-.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item {
-  background: #f8f8f8;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 1px solid #e0e0e0;
-}
-
-.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item-title {
-  font-size: 0.9em;
-  font-weight: 600;
-  color: #333;
-  line-height: 1.3;
-  margin-bottom: 8px;
-  word-wrap: break-word;
-}
-
-.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item-weight {
-  font-size: 0.8em;
-  color: #666;
-  margin-bottom: 12px;
-}
-
-.menu_food__wrapper.food[data-category='Карта бара'] .menu_food__item-price-text {
-  font-weight: 700;
-  color: #222;
 }
